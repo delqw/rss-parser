@@ -189,7 +189,7 @@ var decorateItunes = function decorateItunes(json, channel) {
 Parser.parseString = function(xml, callback) {
   XML2JS.parseString(xml, function(err, result) {
     if (err) return callback(err);
-    if (!result) callback(new Error('Result is not defined'));
+    if (!result) return callback(new Error('Result is not defined'));
     if (result.feed) {
       return parseAtomFeed(result, callback)
     } else if (result.rss && result.rss.$.version && result.rss.$.version.indexOf('2') === 0) {
